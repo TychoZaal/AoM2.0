@@ -69,8 +69,6 @@ namespace UnityTemplateProjects
         [Tooltip("Time it takes to interpolate camera rotation 99% of the way to the target."), Range(0.001f, 1f)]
         public float rotationLerpTime = 0.01f;
 
-        public float edgeSizeX = 1.0f, edgeSizeY = 1.0f;
-
         void OnEnable()
         {
             m_TargetCameraState.SetFromTransform(transform);
@@ -80,19 +78,19 @@ namespace UnityTemplateProjects
         Vector3 GetInputTranslationDirection()
         {
             Vector3 direction = new Vector3();
-            if (Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y > Screen.height - edgeSizeY && Input.mousePosition.y < Screen.height)
+            if (Input.GetKey(KeyCode.W))
             {
                 direction += Vector3.forward;
             }
-            if (Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y < edgeSizeY && Input.mousePosition.y > 0)
+            if (Input.GetKey(KeyCode.S))
             {
                 direction += Vector3.back;
             }
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x < edgeSizeX && Input.mousePosition.x > 0)
+            if (Input.GetKey(KeyCode.A))
             {
                 direction += Vector3.left;
             }
-            if (Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x > Screen.width - edgeSizeX && Input.mousePosition.x < Screen.width)
+            if (Input.GetKey(KeyCode.D))
             {
                 direction += Vector3.right;
             }
