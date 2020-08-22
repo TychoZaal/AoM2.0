@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Economy : MonoBehaviour
 {
+    public static Economy _instance;
+
     [System.Serializable]
     public struct Resource
     {
@@ -25,6 +27,14 @@ public class Economy : MonoBehaviour
 
     public List<Resource> economy;
 
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+    }
+
     public Resource GetResource(string name)
     {
         for (int i = 0; i < economy.Count; i++)
@@ -42,6 +52,8 @@ public class Economy : MonoBehaviour
             if (economy[i].name == name)
             {
                 // Add addition
+                economy[i] = new Resource(economy[i].name, economy[i].currentAmount + addition, economy[i].maxAmount, economy[i].workers);
             }
+        }
     }
 }
