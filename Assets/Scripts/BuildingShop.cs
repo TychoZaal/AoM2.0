@@ -68,7 +68,7 @@ public class BuildingShop : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             // Show hologram version 
-            hologramToDisplay.transform.position = hit.point;
+            hologramToDisplay.transform.position = new Vector3(hit.point.x, ground.transform.position.y, hit.point.z);
         }
 
         if (canPlaceBuilding)
@@ -124,7 +124,7 @@ public class BuildingShop : MonoBehaviour
             }
             else // TODO Play SFX
             {
-                Debug.LogError("Can't place building here");
+
             }
         }
     }
