@@ -45,15 +45,47 @@ public class Economy : MonoBehaviour
         return new Resource(null, 0, 0, 0);
     }
 
-    public void AdjustResourceBalance(string name, int addition)
+    public void AdjustResourceBalance(Cost cost)
     {
         for (int i = 0; i < economy.Count; i++)
         {
-            if (economy[i].name == name)
+            switch(economy[i].name)
             {
-                // Add addition
-                economy[i] = new Resource(economy[i].name, economy[i].currentAmount + addition, economy[i].maxAmount, economy[i].workers);
+                case "Food":
+                    // Add addition
+                    economy[i] = new Resource(economy[i].name, economy[i].currentAmount + cost.foodCost, economy[i].maxAmount, economy[i].workers);
+                    break;
+                case "Wood":
+                    // Add addition
+                    economy[i] = new Resource(economy[i].name, economy[i].currentAmount + cost.woodCost, economy[i].maxAmount, economy[i].workers);
+                    break;
+                case "Gold":
+                    // Add addition
+                    economy[i] = new Resource(economy[i].name, economy[i].currentAmount + cost.goldCost, economy[i].maxAmount, economy[i].workers);
+                    break;
+                case "Faith":
+                    // Add addition
+                    economy[i] = new Resource(economy[i].name, economy[i].currentAmount + cost.faithCost, economy[i].maxAmount, economy[i].workers);
+                    break;
             }
         }
+    }
+
+    public bool CanAfford(int foodCost, int woodCost, int goldCost, int faithCost)
+    {
+        if (GetResource("Food").currentAmount > foodCost)
+        {
+            if (GetResource("Wood").currentAmount > foodCost)
+            {
+                if (GetResource("Gold").currentAmount > foodCost)
+                {
+                    if (GetResource("Faith").currentAmount > foodCost)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

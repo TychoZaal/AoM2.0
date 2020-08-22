@@ -7,13 +7,13 @@ using UnityEngine;
 public class BuildingShop : MonoBehaviour
 {
     [System.Serializable]
-    public struct Building
+    public struct BuildingStruct
     {
         public GameObject holoObject;
-        public GameObject building;
+        public Building building;
         public string key;
 
-        public Building(GameObject holoObject, GameObject building, string key)
+        public BuildingStruct(GameObject holoObject, Building building, string key)
         {
             this.holoObject = holoObject;
             this.building = building;
@@ -26,10 +26,10 @@ public class BuildingShop : MonoBehaviour
     public bool canPlaceBuilding = true;
 
     [SerializeField]
-    private List<Building> buildings;
+    private List<BuildingStruct> buildings;
 
     [SerializeField]
-    private Building buildingToPlace;
+    private BuildingStruct buildingToPlace;
 
     private GameObject hologramToDisplay;
 
@@ -89,9 +89,12 @@ public class BuildingShop : MonoBehaviour
 
     private void HandleGeneralInput()
     {
-        if (Input.GetKeyDown(KeyCode.B) && !tryingToPlace)
+        if (!tryingToPlace) 
         {
-            BuyBuilding(GetBuildingWithKey("Barracks"));
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                BuyBuilding(GetBuildingWithKey("Barracks"));
+            }
         }
     }
     
@@ -124,34 +127,43 @@ public class BuildingShop : MonoBehaviour
             }
             else // TODO Play SFX
             {
-
+                Debug.LogError("Invalid placement");
             }
         }
     }
 
-    public void BuyBuilding(Building building)
+    public void BuyBuilding(BuildingStruct building)
     {
-        buildingToPlace = building;
-        hologramToDisplay = Instantiate(buildingToPlace.holoObject, transform.position, Quaternion.identity, transform);
-        hologramToDisplay.GetComponent<Hologram>().shop = this;
-        holoMaterial = hologramToDisplay.GetComponent<Renderer>();
-        tryingToPlace = true;
+        if (CanBuyBuilding(building.key))
+        {
+            buildingToPlace = building;
+            hologramToDisplay = Instantiate(buildingToPlace.holoObject, transform.position, Quaternion.identity, transform);
+            hologramToDisplay.GetComponent<Hologram>().shop = this;
+            holoMaterial = hologramToDisplay.GetComponent<Renderer>();
+            tryingToPlace = true;
+        }
+        else
+        {
+            // TODO play SFX 
+            Debug.LogError("Not enough resources");
+        }
     }
 
-    private void PlaceBuilding(Building building)
+    private void PlaceBuilding(BuildingStruct building)
     {
         Instantiate(buildingToPlace.building, hologramToDisplay.transform.position, hologramToDisplay.transform.rotation, BuildingsHolder);
+        Economy._instance.AdjustResourceBalance(buildingToPlace.building.cost);
         RemoveHologram();
     }
 
     private void RemoveHologram()
     {
         Destroy(hologramToDisplay);
-        buildingToPlace = new Building(null, null, null);
+        buildingToPlace = new BuildingStruct(null, null, null);
         tryingToPlace = false;
     }
 
-    private Building GetBuildingWithKey(string key)
+    private BuildingStruct GetBuildingWithKey(string key)
     {
         for (int i = 0; i < buildings.Count; i++)
         {
@@ -159,6 +171,19 @@ public class BuildingShop : MonoBehaviour
                 return buildings[i];
         }
 
-        return new Building(null, null, "Error");
+        return new BuildingStruct(null, null, "Error");
+    }
+
+    private bool CanBuyBuilding(string key)
+    {
+        for (int i = 0; i < buildings.Count; i++)
+        {
+            if (buildings[i].key == key)
+            {
+                return Economy._instance.CanAfford(buildings[i].building.cost.foodCost, buildings[i].building.cost.woodCost, buildings[i].building.cost.goldCost, buildings[i].building.cost.faithCost);
+            }
+        }
+
+        return false;
     }
 }

@@ -337,7 +337,7 @@ MonoBehaviour:
   canPlaceBuilding: 1
   buildings:
   - holoObject: {fileID: 252224741297038257, guid: 653b76ebf2cf1414c81b799d15bca613, type: 3}
-    building: {fileID: 4068393048639425895, guid: 7d01b62dca2221c41b922e7c623bcb2e, type: 3}
+    building: {fileID: 4338892339195939736, guid: 7d01b62dca2221c41b922e7c623bcb2e, type: 3}
     key: Barracks
   buildingToPlace:
     holoObject: {fileID: 0}
@@ -1311,15 +1311,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   economy:
   - name: Food
-    currentAmount: 1
+    currentAmount: 250
     maxAmount: 99999
     workers: 0
   - name: Wood
-    currentAmount: 2
+    currentAmount: 250
     maxAmount: 99999
     workers: 0
   - name: Gold
-    currentAmount: 3
+    currentAmount: 250
     maxAmount: 99999
     workers: 0
   - name: Population

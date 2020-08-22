@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 329289258385610872}
   - component: {fileID: 2554994113870949554}
   - component: {fileID: 1076853972398377249}
-  - component: {fileID: 4332401711977174778}
+  - component: {fileID: 4338892339195939736}
+  - component: {fileID: 4489144386616106967}
   m_Layer: 2
   m_Name: Barracks
   m_TagString: Player
@@ -96,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.9798956, y: 2.6765046, z: 4.0960035}
   m_Center: {x: -0.000000059604645, y: 1.3371413, z: -0.0000015497208}
---- !u!114 &4332401711977174778
+--- !u!114 &4338892339195939736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +106,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4068393048639425895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 070abe466777c074f8663ebaf62c31df, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f690087174ea4b4aa54f9ce8dd69bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rate: 1
+  cost: {fileID: 4489144386616106967}
+  currentHealth: 0
+  maxHealth: 100
+--- !u!114 &4489144386616106967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068393048639425895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab01d5d6a3cc05446a3056c1eeae7bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodCost: 0
+  woodCost: -50
+  goldCost: -50
+  faithCost: 0

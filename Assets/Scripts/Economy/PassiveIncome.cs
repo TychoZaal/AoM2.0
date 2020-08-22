@@ -10,6 +10,6 @@ public class PassiveIncome : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Economy._instance.AdjustResourceBalance("Gold", Mathf.FloorToInt(rate));
+        Economy._instance.AdjustResourceBalance(new Cost(0, 0, Mathf.FloorToInt(rate), 0));
     }
 }
