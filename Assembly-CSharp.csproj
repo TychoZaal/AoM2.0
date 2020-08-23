@@ -59,17 +59,19 @@
     <Compile Include="Assets\Scripts\Camera\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\Hologram.cs" />
     <Compile Include="Assets\Scripts\Camera\ZoomCamera.cs" />
+    <Compile Include="Assets\Scripts\Building\IBuilding.cs" />
     <Compile Include="Assets\Scripts\Economy\PassiveIncome.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\BuildingShop.cs" />
+    <Compile Include="Assets\Scripts\Cost.cs" />
+    <Compile Include="Assets\Scripts\Building\Barracks.cs" />
     <Compile Include="Assets\Scripts\Economy\ResourceUIElement.cs" />
     <Compile Include="Assets\Scripts\ForwardGizmo.cs" />
     <Compile Include="Assets\Scripts\Economy\Economy.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\Building\IBuilding.cs" />
-    <Compile Include="Assets\Scripts\Cost.cs" />
     <Compile Include="Assets\Scripts\Building\Building.cs" />
-    <Compile Include="Assets\Scripts\Building\Barracks.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\Input\ISelectable.cs" />
+    <Compile Include="Assets\Scripts\Input\SelectObjects.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class BuildingShop : MonoBehaviour
 {
+    public static BuildingShop _instance;
+
     [System.Serializable]
     public struct BuildingStruct
     {
@@ -21,7 +23,7 @@ public class BuildingShop : MonoBehaviour
         }
     }
 
-    private bool tryingToPlace = false;
+    public bool tryingToPlace = false;
 
     public bool canPlaceBuilding = true;
 
@@ -47,6 +49,14 @@ public class BuildingShop : MonoBehaviour
     private Color hologramColorHSV, hologramColorErrorHSV;
 
     private Renderer holoMaterial;
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+    }
 
     // Update is called once per frame
     void Update()
