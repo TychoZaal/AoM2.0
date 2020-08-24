@@ -70,8 +70,9 @@
     <Compile Include="Assets\Scripts\Economy\Economy.cs" />
     <Compile Include="Assets\Scripts\Building\Building.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\Input\ISelectable.cs" />
     <Compile Include="Assets\Scripts\Input\SelectObjects.cs" />
+    <Compile Include="Assets\Scripts\Input\ISelectable.cs" />
+    <Compile Include="Assets\Scripts\Input\HealthBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

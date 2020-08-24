@@ -10,6 +10,10 @@ public class SelectObjects : MonoBehaviour
 
     public List<ISelectable> allSelectables;
     public GameObject selectedObject;
+    private ISelectable lastSelected;
+
+    [SerializeField]
+    private GameObject canvas;
 
     private void Awake()
     {
@@ -31,15 +35,33 @@ public class SelectObjects : MonoBehaviour
             {
                 ISelectable scannedObject = hit.transform.gameObject.GetComponent<ISelectable>();
 
+                if (scannedObject != lastSelected && lastSelected != null)
+                {
+                    lastSelected.ShowHealthBar(canvas, false);
+                }
+
                 if (!BuildingShop._instance.tryingToPlace)
                 {
-                    scannedObject.ShowHealthBar();
+                    scannedObject.ShowHealthBar(canvas, true);
+
+                    lastSelected = scannedObject;
 
                     if (Input.GetMouseButtonDown(0))
                     {
                         scannedObject.ToggleSelected();
                     }
                 }
+            }
+        }
+
+        // Handle selected object input
+        if (selectedObject != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Delete))
+            {
+                selectedObject.GetComponent<ISelectable>().Remove();
+                selectedObject = null;
+                lastSelected = null;
             }
         }
     }

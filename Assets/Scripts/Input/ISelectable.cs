@@ -4,9 +4,11 @@ using UnityEngine;
 
 public interface ISelectable 
 {
-    void ShowHealthBar();
+    void ShowHealthBar(GameObject canvas, bool currentlySelected);
 
     void AddToSelectablesList();
 
     void ToggleSelected();
+
+    void Remove();
 }
