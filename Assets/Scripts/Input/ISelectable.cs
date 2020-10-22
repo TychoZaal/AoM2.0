@@ -8,7 +8,5 @@ public interface ISelectable
 
     void AddToSelectablesList();
 
-    void ToggleSelected();
-
     void Remove();
 }

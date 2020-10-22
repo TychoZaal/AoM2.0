@@ -34,11 +34,6 @@ public class Building : MonoBehaviour, IBuilding, ISelectable
         healthBar = currentlySelected ? canvas.GetComponent<HealthBar>().healthBar : null;
     }
 
-    public void ToggleSelected()
-    {
-        SelectObjects._instance.SetSelectables(gameObject);
-    }
-
     protected virtual void Update()
     {
         float healthPercentage = (float)currentHealth / (float)maxHealth;

@@ -9,8 +9,8 @@ public class SelectObjects : MonoBehaviour
     public static SelectObjects _instance;
 
     public List<ISelectable> allSelectables;
-    public GameObject selectedObject;
-    private ISelectable lastSelected;
+    [SerializeField]
+    private ISelectable lastSelected, lastHovered;
 
     [SerializeField]
     private GameObject canvas;
@@ -35,44 +35,63 @@ public class SelectObjects : MonoBehaviour
             {
                 ISelectable scannedObject = hit.transform.gameObject.GetComponent<ISelectable>();
 
-                if (scannedObject != lastSelected && lastSelected != null)
-                {
-                    lastSelected.ShowHealthBar(canvas, false);
-                }
+                lastHovered = scannedObject;
+
+                Hover(lastHovered, true);
 
                 if (!BuildingShop._instance.tryingToPlace)
                 {
-                    scannedObject.ShowHealthBar(canvas, true);
-
-                    lastSelected = scannedObject;
-
-                    if (Input.GetMouseButtonDown(0))
+                     if (Input.GetMouseButtonDown(0)) // User clicked on selectable
                     {
-                        scannedObject.ToggleSelected();
+                        Clicked(scannedObject);
                     }
                 }
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0)) // User clicked on nothing
+                {
+                    ResetSelectable();
+                }
+
+                if (lastHovered != null)
+                    Hover(lastHovered, true);
             }
         }
 
         // Handle selected object input
-        if (selectedObject != null)
+        if (lastSelected != null)
         {
             if (Input.GetKeyDown(KeyCode.Delete))
             {
-                selectedObject.GetComponent<ISelectable>().Remove();
-                selectedObject = null;
-                lastSelected = null;
+                lastSelected.Remove();
+                ResetSelectable();
             }
         }
+    }
+
+    private void Hover(ISelectable selected, bool toDisplay) // Display health bar and other information UI elements
+    {
+        selected.ShowHealthBar(canvas, toDisplay);
+    }
+
+    private void Clicked(ISelectable selected)
+    {
+        lastHovered = selected;
+        lastSelected = selected;
+    }
+
+    private void ResetSelectable()
+    {
+        if (lastHovered != null)
+            lastHovered.ShowHealthBar(canvas, false);
+
+        lastHovered = null;
+        lastSelected = null;
     }
 
     public void AddToSelectables(ISelectable selectable)
     {
         allSelectables.Add(selectable);
-    }
-
-    public void SetSelectables(GameObject go)
-    {
-        selectedObject = go;
     }
 }
