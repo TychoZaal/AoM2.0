@@ -27,6 +27,8 @@ public class BuildingShop : MonoBehaviour
 
     public bool canPlaceBuilding = true;
 
+    private bool clickedButton = false;
+
     [SerializeField]
     private List<BuildingStruct> buildings;
 
@@ -99,12 +101,18 @@ public class BuildingShop : MonoBehaviour
 
     private void HandleGeneralInput()
     {
-        if (!tryingToPlace) 
+        if (!tryingToPlace)
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
                 BuyBuilding(GetBuildingWithKey("Barracks"));
             }
+        }
+
+        if (Input.GetMouseButtonUp(0)) // Mouse 0 button is released
+        {
+            if (clickedButton)
+                clickedButton = !clickedButton;
         }
     }
     
@@ -129,7 +137,7 @@ public class BuildingShop : MonoBehaviour
         }
 
         // Place using left mouse
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !clickedButton)
         {
             if (canPlaceBuilding)
             {
@@ -140,6 +148,12 @@ public class BuildingShop : MonoBehaviour
                 Debug.LogError("Invalid placement");
             }
         }
+    }
+
+    public void UIBuildingPressed(string key)
+    {
+        clickedButton = true;
+        BuyBuilding(GetBuildingWithKey(key));
     }
 
     public void BuyBuilding(BuildingStruct building)

@@ -119,10 +119,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 987
-  m_MinSize: {x: 681, y: 342}
-  m_MaxSize: {x: 16006, y: 8042}
+  m_MinSize: {x: 680, y: 342}
+  m_MaxSize: {x: 16005, y: 8042}
   vertical: 0
-  controlID: 55
+  controlID: 108
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 405, y: 342}
   m_MaxSize: {x: 12005, y: 8042}
   vertical: 1
-  controlID: 65
+  controlID: 109
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_MinSize: {x: 405, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 66
+  controlID: 110
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -435,9 +435,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 7.26025, y: 6, z: -2.37411}
+    m_Target: {x: 632.9669, y: 181.27554, z: -1.3393555}
     speed: 2
-    m_Value: {x: 7.26025, y: 6, z: -2.37411}
+    m_Value: {x: 632.9669, y: 181.27554, z: -1.3393555}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -484,13 +484,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.19116811, y: 0.48009288, z: -0.108061604, w: 0.84929645}
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: 0.19116656, y: 0.48008898, z: -0.108060725, w: 0.84928954}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2.107985
+    m_Target: 326.63788
     speed: 2
-    m_Value: 2.107985
+    m_Value: 326.63788
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1231,9 +1231,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a4400000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 62fbffff
+      m_SelectedIDs: dc3e0000
+      m_LastClickedID: 16092
+      m_ExpandedIDs: a4ddfeff62fbffffb43e0000ba3e0000c43e0000263f0000743f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1295,21 +1295,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Building
+    - Assets/Scripts/UI
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts/Building
+  - Assets/Scripts/UI
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\Tycho\Documents\AoM2.0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 158}
-    m_SelectedIDs: 8e400000
-    m_LastClickedID: 16526
-    m_ExpandedIDs: 00000000924000009440000096400000984000009a4000009c4000009e400000
+    m_SelectedIDs: 04410000
+    m_LastClickedID: 16644
+    m_ExpandedIDs: 00000000924000009440000096400000984000009a4000009c4000009e40000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1362,8 +1362,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d63e0000
-    m_LastClickedInstanceID: 16086
+    m_SelectedInstanceIDs: ba3e0000
+    m_LastClickedInstanceID: 16058
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 22260000fccffdff5ab6ffff64340000ce2800003c38f4ff2027000052290000982b00000c2d000086320000762a0000ae2a00000c2c0000b62d0000ca2a000004330000922a00007a2a0000c62d0000142c0000b22a0000442b0000cc3000001e350000e2310000102f0000b2060000b82a0000802a0000cc2d0000462c000052320000040c0000f6a80600c62f000096310000fe3000002c320000562c0000d430000082410000183c0000bc920000126200008e6a000002cf0000c64b0000c8500000c27f00007c150500d860000038ac0000589d000000000000
     m_RenameOverlay:
@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 16086
+  m_LastSelectedObjectID: 16092
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
