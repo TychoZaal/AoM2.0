@@ -110,10 +110,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 4489144386616106967}
+  ringRadius: 0.85
   currentHealth: 0
   maxHealth: 100
   healthBar: {fileID: 0}
   canvasOffset: {x: 0, y: 6, z: 0}
+  selectableRingOffset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &4489144386616106967
 MonoBehaviour:
   m_ObjectHideFlags: 0

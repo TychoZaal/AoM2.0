@@ -9,13 +9,16 @@ public class Building : MonoBehaviour, IBuilding, ISelectable
     public Cost cost;
 
     [SerializeField]
+    private float ringRadius;
+
+    [SerializeField]
     protected int currentHealth, maxHealth;
 
     [SerializeField]
     private Image healthBar;
 
     [SerializeField]
-    private Vector3 canvasOffset;
+    private Vector3 canvasOffset, selectableRingOffset;
 
     public void AddToSelectablesList()
     {
@@ -40,5 +43,12 @@ public class Building : MonoBehaviour, IBuilding, ISelectable
 
         if (healthBar != null)
             healthBar.fillAmount = healthPercentage;
+    }
+
+    public void ShowSelectionRing(GameObject ring, bool toShow)
+    {
+        ring.SetActive(toShow);
+        ring.transform.position = transform.position + selectableRingOffset;
+        ring.transform.localScale = new Vector3(ringRadius, ringRadius, ringRadius);
     }
 }

@@ -9,4 +9,6 @@ public interface ISelectable
     void AddToSelectablesList();
 
     void Remove();
+
+    void ShowSelectionRing(GameObject ring, bool currentlySelected);
 }

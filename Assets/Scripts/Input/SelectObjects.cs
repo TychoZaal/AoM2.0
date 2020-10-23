@@ -13,7 +13,7 @@ public class SelectObjects : MonoBehaviour
     private ISelectable lastSelected, lastHovered;
 
     [SerializeField]
-    private GameObject canvas;
+    private GameObject canvas, selectableRing;
 
     private void Awake()
     {
@@ -37,11 +37,9 @@ public class SelectObjects : MonoBehaviour
 
                 lastHovered = scannedObject;
 
-                Hover(lastHovered, true);
-
                 if (!BuildingShop._instance.tryingToPlace)
                 {
-                     if (Input.GetMouseButtonDown(0)) // User clicked on selectable
+                    if (Input.GetMouseButtonDown(0)) // User clicked on selectable
                     {
                         Clicked(scannedObject);
                     }
@@ -53,9 +51,17 @@ public class SelectObjects : MonoBehaviour
                 {
                     ResetSelectable();
                 }
+            }
 
-                if (lastHovered != null)
-                    Hover(lastHovered, true);
+            if (lastHovered != null)
+            {
+                Hover(lastHovered, true);
+
+                if (lastSelected != null)
+                {
+                    lastSelected.ShowSelectionRing(selectableRing, true);
+                    lastSelected.ShowHealthBar(canvas, true);
+                }
             }
         }
 
@@ -72,7 +78,7 @@ public class SelectObjects : MonoBehaviour
 
     private void Hover(ISelectable selected, bool toDisplay) // Display health bar and other information UI elements
     {
-        selected.ShowHealthBar(canvas, toDisplay);
+        Debug.LogError(selected);
     }
 
     private void Clicked(ISelectable selected)
@@ -85,6 +91,12 @@ public class SelectObjects : MonoBehaviour
     {
         if (lastHovered != null)
             lastHovered.ShowHealthBar(canvas, false);
+
+        if (lastSelected != null)
+        {
+            lastSelected.ShowSelectionRing(selectableRing, false);
+            lastSelected.ShowHealthBar(canvas, false);
+        }
 
         lastHovered = null;
         lastSelected = null;
